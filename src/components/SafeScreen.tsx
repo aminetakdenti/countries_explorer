@@ -12,6 +12,7 @@ export const SafeScreen = ({ children, ...props }: Props) => {
       style={{
         flex: 1,
         paddingTop: insets.top,
+        backgroundColor: "white",
       }}
       {...props}
     >
