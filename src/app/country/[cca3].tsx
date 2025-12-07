@@ -6,6 +6,7 @@ import { SafeScreen } from "@/src/components";
 import { styles } from "@/src/styles";
 import { Icons } from "@/src/utils";
 import { useLocalSearchParams, useRouter } from "expo-router";
+import { useTranslation } from "react-i18next";
 
 type Params = {
   cca3: string;
@@ -16,11 +17,12 @@ export default function Index() {
   const currentCountry = useCountry(cca3);
 
   const router = useRouter();
+  const { t } = useTranslation();
 
   if (currentCountry.isLoading) {
     return (
       <SafeScreen>
-        <Text>Loading...</Text>
+        <Text>{t("country.loading")}</Text>
       </SafeScreen>
     );
   }
@@ -52,7 +54,7 @@ export default function Index() {
           <Text
             style={{ fontSize: 24, fontWeight: "bold", marginVertical: 10 }}
           >
-            Country Details
+            {t("country.headerTitle")}
           </Text>
         </View>
 
@@ -75,7 +77,7 @@ export default function Index() {
         </Text>
 
         <Text style={{ fontSize: 16, marginTop: 5 }}>
-          {currentCountry.data?.capital?.[0] || "N/A"}
+          {currentCountry.data?.capital?.[0] || t("country.capital")}
         </Text>
         <Text style={{ fontSize: 16, marginTop: 5 }}>
           {currentCountry.data?.region}

@@ -2,5 +2,10 @@
   "home": {
     "searching": "Searching...",
     "noCountriesFound": "No countries found for "
+  },
+  "country": {
+    "headerTitle": "Country Details",
+    "loading": "Loading country details...",
+    "capital": "N/A"
   }
 }
