@@ -8,6 +8,8 @@ import {
   ViewStyle,
 } from "react-native";
 
+import { styles } from "@/src/styles";
+
 interface Props extends PressableProps {
   onPress: () => void;
   title: string;
@@ -17,13 +19,19 @@ interface Props extends PressableProps {
 
 export function Button({ onPress, title, titleStyle, style, ...props }: Props) {
   return (
-    <Pressable onPress={onPress} style={[styles.button, style]} {...props}>
-      <Text style={[styles.buttonText, titleStyle]}>{title}</Text>
+    <Pressable
+      onPress={onPress}
+      style={[buttonStyles.button, style]}
+      {...props}
+    >
+      <Text style={[styles.font, buttonStyles.buttonText, titleStyle]}>
+        {title}
+      </Text>
     </Pressable>
   );
 }
 
-const styles = StyleSheet.create({
+const buttonStyles = StyleSheet.create({
   button: {
     padding: 10,
     borderRadius: 5,

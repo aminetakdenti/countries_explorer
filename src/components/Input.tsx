@@ -7,6 +7,8 @@ import {
   ViewStyle,
 } from "react-native";
 
+import { styles } from "@/src/styles";
+
 interface Props extends TextInputProps {
   leftView?: React.ReactNode;
   rightView?: React.ReactNode;
@@ -37,10 +39,15 @@ export const Input = ({
     >
       {leftView}
       <TextInput
-        style={{
-          height: "100%",
-          flex: 1,
-        }}
+        style={[
+          {
+            height: "100%",
+            width: "100%",
+            flex: 1,
+          },
+          styles.font,
+          props.style,
+        ]}
         {...props}
       />
       {rightView}

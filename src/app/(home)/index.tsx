@@ -28,7 +28,9 @@ function SearchingState() {
   return (
     <View style={[styles.flex1, styles.center]}>
       <ActivityIndicator size="large" />
-      <Text style={{ marginTop: 10 }}>{t("home.searching")}</Text>
+      <Text style={[styles.font, { marginTop: 10 }]}>
+        {t("home.searching")}
+      </Text>
     </View>
   );
 }
@@ -37,7 +39,7 @@ function EmptySearchResults({ search }: { search: string }) {
   const { t } = useTranslation();
   return (
     <View style={[styles.flex1, styles.center]}>
-      <Text style={{ fontSize: 16, color: "#666" }}>
+      <Text style={[styles.font, { fontSize: 16, color: "#666" }]}>
         {t("home.noCountriesFound")}
         {search}
       </Text>
@@ -106,7 +108,10 @@ export default function Index() {
           }}
         >
           <Text
-            style={{ fontSize: 24, fontWeight: "bold", marginVertical: 10 }}
+            style={[
+              styles.fontBold,
+              { fontSize: 24, fontWeight: "700", marginVertical: 10 },
+            ]}
           >
             {t("home.headerTitle")}
           </Text>

@@ -18,4 +18,10 @@ export const styles = StyleSheet.create({
   layoutCol: {
     flexDirection: "column",
   },
+  font: {
+    fontFamily: "SpaceMono",
+  },
+  fontBold: {
+    fontFamily: "SpaceMonoBold",
+  },
 });

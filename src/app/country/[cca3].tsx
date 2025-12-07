@@ -38,7 +38,12 @@ function Header() {
         <Icons.LeftArrowIcon width={24} height={34} />
       </Pressable>
 
-      <Text style={{ fontSize: 24, fontWeight: "bold", marginVertical: 10 }}>
+      <Text
+        style={[
+          styles.fontBold,
+          { fontSize: 24, fontWeight: "700", marginVertical: 10 },
+        ]}
+      >
         {t("country.headerTitle")}
       </Text>
     </View>
@@ -70,7 +75,7 @@ function CountryError({ onPress }: { onPress: () => void }) {
       <View style={[styles.container]}>
         <Header />
         <View style={[styles.flex1, styles.center, { marginBottom: 100 }]}>
-          <Text style={{ fontSize: 16, color: "#666" }}>
+          <Text style={[styles.font, { fontSize: 16, color: "#666" }]}>
             {t("country.errorLoadingCountry")}
           </Text>
           <Button title={t("country.refetch")} onPress={onPress} />
@@ -111,19 +116,24 @@ export default function Index() {
             style={{ height: "100%", width: "100%" }}
           />
         </View>
-        <Text style={{ fontSize: 20, fontWeight: "700", marginTop: 20 }}>
+        <Text
+          style={[
+            styles.fontBold,
+            { fontSize: 20, fontWeight: "700", marginTop: 20 },
+          ]}
+        >
           {currentCountry.data?.name.common}
         </Text>
-        <Text style={{ fontSize: 16, marginTop: 5 }}>
+        <Text style={[styles.font, { fontSize: 16, marginTop: 5 }]}>
           {currentCountry.data?.capital?.[0] || t("country.capital")}
         </Text>
-        <Text style={{ fontSize: 16, marginTop: 5 }}>
+        <Text style={[styles.font, { fontSize: 16, marginTop: 5 }]}>
           {currentCountry.data?.region}
         </Text>
-        <Text style={{ fontSize: 16, marginTop: 5 }}>
+        <Text style={[styles.font, { fontSize: 16, marginTop: 5 }]}>
           {currentCountry.data?.population.toLocaleString()}
         </Text>
-        <Text style={{ fontSize: 16, marginTop: 5 }}>
+        <Text style={[styles.font, { fontSize: 16, marginTop: 5 }]}>
           {currentCountry.data?.cca3}
         </Text>
       </View>

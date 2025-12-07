@@ -2,6 +2,7 @@ import React from "react";
 import { Image, Pressable, Text, View } from "react-native";
 
 import { Country } from "@/src/api/country/country.schema";
+import { styles } from "@/src/styles";
 
 type CountryItemProps = {
   item: Country;
@@ -24,8 +25,10 @@ function _CountryItem({ item, onPress }: CountryItemProps) {
         style={{ height: 40, width: 60 }}
       />
       <View>
-        <Text>{item.name.common}</Text>
-        <Text>{item.cca3}</Text>
+        <Text style={[styles.fontBold, { fontWeight: "700" }]}>
+          {item.name.common}
+        </Text>
+        <Text style={[styles.font]}>{item.cca3}</Text>
       </View>
     </Pressable>
   );
