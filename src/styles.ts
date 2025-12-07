@@ -24,4 +24,6 @@ export const styles = StyleSheet.create({
   fontBold: {
     fontFamily: "SpaceMonoBold",
   },
+  tabFocused: { color: "#007AFF" },
+  tabUnfocused: { color: "#8E8E93" },
 });

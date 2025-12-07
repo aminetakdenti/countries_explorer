@@ -3,9 +3,13 @@ import { useEffect } from "react";
 import { loadLanguage } from "@/src/translation/i18n";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { Tabs } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
+import { useTranslation } from "react-i18next";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+
+import { styles } from "../styles";
+import { Icons } from "../utils";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -17,6 +21,57 @@ const queryClient = new QueryClient({
     },
   },
 });
+
+function TabsLayout() {
+  const { t } = useTranslation();
+
+  return (
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Tabs.Screen
+        name="(home)"
+        options={{
+          title: t("tabs.home"),
+          tabBarIcon(props) {
+            return (
+              <Icons.HomeIcon
+                width={24}
+                height={24}
+                color={
+                  props.focused
+                    ? styles.tabFocused.color
+                    : styles.tabUnfocused.color
+                }
+              />
+            );
+          },
+        }}
+      />
+      <Tabs.Screen
+        name="(settings)/index"
+        options={{
+          title: t("tabs.settings"),
+          tabBarIcon(props) {
+            return (
+              <Icons.SettingsIcon
+                width={24}
+                height={24}
+                color={
+                  props.focused
+                    ? styles.tabFocused.color
+                    : styles.tabUnfocused.color
+                }
+              />
+            );
+          },
+        }}
+      />
+    </Tabs>
+  );
+}
 
 export default function RootLayout() {
   // Load custom fonts (optional)
@@ -42,14 +97,7 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <QueryClientProvider client={queryClient}>
-        <Stack
-          screenOptions={{
-            headerShown: false,
-          }}
-        >
-          <Stack.Screen name="(home)" />
-          <Stack.Screen name="country/[cca3]" />
-        </Stack>
+        <TabsLayout />
       </QueryClientProvider>
     </SafeAreaProvider>
   );

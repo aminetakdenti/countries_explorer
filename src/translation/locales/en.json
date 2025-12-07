@@ -1,4 +1,8 @@
 {
+  "tabs": {
+    "home": "Home",
+    "settings": "Settings"
+  },
   "home": {
     "headerTitle": "Countries Explorer",
     "searchPlaceholder": "Search countries...",

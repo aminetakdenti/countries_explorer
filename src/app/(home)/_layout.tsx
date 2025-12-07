@@ -1,7 +1,12 @@
 import React from "react";
 
-import { Slot } from "expo-router";
+import { Stack } from "expo-router";
 
 export default function HomeLayout() {
-  return <Slot />;
+  return (
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="index" />
+      <Stack.Screen name="country/[cca3]" />
+    </Stack>
+  );
 }
