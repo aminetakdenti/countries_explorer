@@ -1,16 +1,16 @@
 import React from "react";
 import {
-  Pressable,
-  PressableProps,
   StyleSheet,
   Text,
   TextStyle,
+  TouchableOpacity,
+  TouchableOpacityProps,
   ViewStyle,
 } from "react-native";
 
 import { styles } from "@/src/styles";
 
-interface Props extends PressableProps {
+interface Props extends TouchableOpacityProps {
   onPress: () => void;
   title: string;
   titleStyle?: TextStyle;
@@ -19,7 +19,7 @@ interface Props extends PressableProps {
 
 export function Button({ onPress, title, titleStyle, style, ...props }: Props) {
   return (
-    <Pressable
+    <TouchableOpacity
       onPress={onPress}
       style={[buttonStyles.button, style]}
       {...props}
@@ -27,7 +27,7 @@ export function Button({ onPress, title, titleStyle, style, ...props }: Props) {
       <Text style={[styles.font, buttonStyles.buttonText, titleStyle]}>
         {title}
       </Text>
-    </Pressable>
+    </TouchableOpacity>
   );
 }
 

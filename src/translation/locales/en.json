@@ -15,5 +15,16 @@
     "capital": "N/A",
     "refetch": "Refetch",
     "errorLoadingCountry": "Error loading country details."
+  },
+  "settings": {
+    "headerTitle": "Settings",
+    "welcomeMessage": "Manage your preferences and app settings",
+    "changeLang": "Change Language",
+    "modal": {
+      "title": "Select Your Language",
+      "en": "English",
+      "sp": "Spanish",
+      "button": "Confirm"
+    }
   }
 }

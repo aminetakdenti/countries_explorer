@@ -18,6 +18,9 @@ export const styles = StyleSheet.create({
   layoutCol: {
     flexDirection: "column",
   },
+  spaceBetween: {
+    justifyContent: "space-between",
+  },
   font: {
     fontFamily: "SpaceMono",
   },

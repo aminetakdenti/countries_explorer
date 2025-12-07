@@ -1,3 +1,5 @@
+import { useCallback, useEffect, useState } from "react";
+
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
@@ -28,6 +30,33 @@ export const loadLanguage = async () => {
 export const changeAppLanguage = async (lng: "en" | "sp") => {
   await i18n.changeLanguage(lng);
   await AsyncStorage.setItem("language", lng);
+};
+
+type Language = "en" | "sp";
+
+export const useLanguage = () => {
+  const [currentLang, setCurrentLang] = useState<Language>("en");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const init = async () => {
+      const saved = await AsyncStorage.getItem("language");
+      if (saved === "en" || saved === "sp") {
+        await i18n.changeLanguage(saved);
+        setCurrentLang(saved);
+      }
+      setLoading(false);
+    };
+    init();
+  }, []);
+
+  const changeLanguage = useCallback(async (lng: Language) => {
+    await i18n.changeLanguage(lng);
+    await AsyncStorage.setItem("language", lng);
+    setCurrentLang(lng);
+  }, []);
+
+  return { currentLang, changeLanguage, loading };
 };
 
 export default i18n;
