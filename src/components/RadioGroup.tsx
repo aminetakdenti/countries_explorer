@@ -14,6 +14,7 @@ import { styles } from "../styles";
 type RadioOption = {
   label: string;
   value: string | number;
+  isSelected: boolean;
 };
 
 type RadioGroupProps = {
@@ -36,7 +37,6 @@ export function RadioGroup({
   return (
     <View style={[radioGroupStyles.container, containerStyle]}>
       {options.map((option) => {
-        const isSelected = selectedValue === option.value;
         return (
           <Pressable
             key={option.value}
@@ -44,7 +44,9 @@ export function RadioGroup({
             onPress={() => onValueChange(option.value)}
           >
             <View style={[radioGroupStyles.circle]}>
-              <View style={[isSelected && radioGroupStyles.selectedCircle]} />
+              <View
+                style={[option.isSelected && radioGroupStyles.selectedCircle]}
+              />
             </View>
             <Text style={[styles.font, radioGroupStyles.label, labelStyle]}>
               {option.label}

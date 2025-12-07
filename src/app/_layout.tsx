@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 
-import { loadLanguage } from "@/src/translation/i18n";
+import "@/src/translation/i18n";
+
+import { LanguageProvider } from "@/src/translation/LanguageContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
 import { Tabs } from "expo-router";
@@ -24,7 +26,6 @@ const queryClient = new QueryClient({
 
 function TabsLayout() {
   const { t } = useTranslation();
-
   return (
     <Tabs
       screenOptions={{
@@ -74,15 +75,10 @@ function TabsLayout() {
 }
 
 export default function RootLayout() {
-  // Load custom fonts (optional)
   const [fontsLoaded, fontError] = useFonts({
     SpaceMono: require("@/assets/fonts/SpaceMono-Regular.ttf"),
     SpaceMonoBold: require("@/assets/fonts/SpaceMono-Bold.ttf"),
   });
-
-  useEffect(() => {
-    loadLanguage();
-  }, []);
 
   useEffect(() => {
     if (fontsLoaded || fontError) {
@@ -96,9 +92,11 @@ export default function RootLayout() {
 
   return (
     <SafeAreaProvider>
-      <QueryClientProvider client={queryClient}>
-        <TabsLayout />
-      </QueryClientProvider>
+      <LanguageProvider>
+        <QueryClientProvider client={queryClient}>
+          <TabsLayout />
+        </QueryClientProvider>
+      </LanguageProvider>
     </SafeAreaProvider>
   );
 }

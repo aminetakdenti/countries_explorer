@@ -3,25 +3,24 @@ import { Modal, Pressable, Text, TouchableOpacity, View } from "react-native";
 
 import { Button, RadioGroup, SafeScreen } from "@/src/components";
 import { styles } from "@/src/styles";
-import { useLanguage } from "@/src/translation/i18n";
+import { useLanguage } from "@/src/translation/LanguageContext";
 import { Icons } from "@/src/utils";
 import { useTranslation } from "react-i18next";
 
 export default function Settings() {
   const { t } = useTranslation();
-
   const { currentLang, changeLanguage } = useLanguage();
-
-  const options = [
-    { value: "en", label: t("settings.modal.en") },
-    { value: "sp", label: t("settings.modal.sp") },
-  ];
 
   const [lang, setLang] = useState(currentLang);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const onModalButtonPress = () => {
-    changeLanguage(currentLang);
+  const options = [
+    { value: "en", label: t("settings.modal.en"), isSelected: "en" === lang },
+    { value: "sp", label: t("settings.modal.sp"), isSelected: "sp" === lang },
+  ];
+
+  const onModalButtonPress = async () => {
+    await changeLanguage(lang);
     setIsModalVisible(false);
   };
 

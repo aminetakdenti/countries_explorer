@@ -1,1 +1,30 @@
-{}
+{
+  "tabs": {
+    "home": "Inicio",
+    "settings": "Configuración"
+  },
+  "home": {
+    "headerTitle": "Explorador de Países",
+    "searchPlaceholder": "Buscar países...",
+    "searching": "Buscando...",
+    "noCountriesFound": "No se encontraron países para ",
+    "loadMore": "Cargar más"
+  },
+  "country": {
+    "headerTitle": "Detalles del País",
+    "capital": "N/D",
+    "refetch": "Volver a cargar",
+    "errorLoadingCountry": "Error al cargar los detalles del país."
+  },
+  "settings": {
+    "headerTitle": "Configuración",
+    "welcomeMessage": "Administra tus preferencias y configuraciones de la app",
+    "changeLang": "Cambiar idioma",
+    "modal": {
+      "title": "Selecciona tu idioma",
+      "en": "Inglés",
+      "sp": "Español",
+      "button": "Confirmar"
+    }
+  }
+}
