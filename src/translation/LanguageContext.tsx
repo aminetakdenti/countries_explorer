@@ -36,9 +36,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
 
         await i18n.changeLanguage(langToUse);
         setCurrentLang(langToUse);
-        console.log("initialized with language: ", langToUse);
-      } catch (error) {
-        console.error("Error initializing language:", error);
+      } catch {
       } finally {
         setIsReady(true);
       }
@@ -47,7 +45,6 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const changeLanguage = async (lng: Language) => {
-    console.log("changing lang to: ", lng);
     try {
       await i18n.changeLanguage(lng);
       await AsyncStorage.setItem("language", lng);
@@ -55,12 +52,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
 
       // Force a small delay to ensure i18n has updated
       await new Promise((resolve) => setTimeout(resolve, 100));
-
-      console.log("language changed successfully to: ", lng);
-      console.log("i18n current language: ", i18n.language);
-    } catch (error) {
-      console.error("error changing language:", error);
-    }
+    } catch {}
   };
 
   return (
