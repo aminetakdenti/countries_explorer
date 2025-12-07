@@ -19,5 +19,5 @@ export const useCountry = (cca3: string) =>
   useQuery({
     queryKey: ["country", cca3],
     queryFn: () => countryService.getCountryByCca3(cca3),
-    enabled: !!cca3,
+    enabled: !!cca3 && cca3.length === 3,
   });

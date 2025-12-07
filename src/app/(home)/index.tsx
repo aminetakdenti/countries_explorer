@@ -81,7 +81,7 @@ export default function Index() {
     query.isSearching && paginated.length === 0 && !query.isInitialLoading;
 
   const onCountryPressHandler = useCallback((cca3: string) => {
-    router.navigate(`/country/[${cca3}]`);
+    router.navigate(`/country/${cca3}`);
   }, []);
 
   return (
