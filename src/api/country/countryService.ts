@@ -1,5 +1,5 @@
 import { api } from "../api";
-import { Countries, countriesSchema } from "./country.schema";
+import { Countries, countriesSchema, countrySchema } from "./country.schema";
 
 const FIELDS = [
   "name",
@@ -26,6 +26,17 @@ export const countryService = {
     const res = await api.get(`/name/${name}?fields=${FIELDS}`);
 
     const parsed = countriesSchema.safeParse(res.data);
+    if (!parsed.success) {
+      throw new Error(parsed.error.message);
+    }
+
+    return parsed.data;
+  },
+
+  getCountryByCca3: async (cca3: string) => {
+    const res = await api.get(`/alpha/${cca3}?fields=${FIELDS}`);
+
+    const parsed = countrySchema.safeParse(res.data);
     if (!parsed.success) {
       throw new Error(parsed.error.message);
     }

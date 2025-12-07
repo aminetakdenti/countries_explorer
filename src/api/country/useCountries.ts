@@ -14,3 +14,10 @@ export const useSearchCountries = (search: string) =>
     queryFn: () => countryService.searchCountries(search),
     enabled: search.length > 0,
   });
+
+export const useCountry = (cca3: string) =>
+  useQuery({
+    queryKey: ["country", cca3],
+    queryFn: () => countryService.getCountryByCca3(cca3),
+    enabled: !!cca3,
+  });
