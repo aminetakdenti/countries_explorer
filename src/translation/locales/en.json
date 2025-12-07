@@ -1,1 +1,6 @@
-{}
+{
+  "home": {
+    "searching": "Searching...",
+    "noCountriesFound": "No countries found for "
+  }
+}

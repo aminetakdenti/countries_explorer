@@ -14,23 +14,27 @@ import { useCountry, usePagination } from "@/src/hooks";
 import { styles } from "@/src/styles";
 import { Icons } from "@/src/utils";
 import { router } from "expo-router";
+import { useTranslation } from "react-i18next";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useDebounce } from "use-debounce";
 
 function SearchingState() {
+  const { t } = useTranslation();
   return (
     <View style={[styles.flex1, styles.center]}>
       <ActivityIndicator size="large" />
-      <Text style={{ marginTop: 10 }}>Searching...</Text>
+      <Text style={{ marginTop: 10 }}>{t("home.searching")}</Text>
     </View>
   );
 }
 
 function EmptySearchResults({ search }: { search: string }) {
+  const { t } = useTranslation();
   return (
     <View style={[styles.flex1, styles.center]}>
       <Text style={{ fontSize: 16, color: "#666" }}>
-        No countries found for {search}
+        {t("home.noCountriesFound")}
+        {search}
       </Text>
     </View>
   );
