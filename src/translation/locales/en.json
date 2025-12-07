@@ -5,7 +5,8 @@
   },
   "country": {
     "headerTitle": "Country Details",
-    "loading": "Loading country details...",
-    "capital": "N/A"
+    "capital": "N/A",
+    "refetch": "Refetch",
+    "errorLoadingCountry": "Error loading country details."
   }
 }
