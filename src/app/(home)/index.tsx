@@ -1,7 +1,6 @@
 import { useCallback, useState } from "react";
 import {
   ActivityIndicator,
-  Button,
   FlatList,
   Pressable,
   RefreshControl,
@@ -9,7 +8,13 @@ import {
   View,
 } from "react-native";
 
-import { CountryItem, Input, Loading, SafeScreen } from "@/src/components";
+import {
+  Button,
+  CountryItem,
+  Input,
+  Loading,
+  SafeScreen,
+} from "@/src/components";
 import { useCountry, usePagination } from "@/src/hooks";
 import { styles } from "@/src/styles";
 import { Icons } from "@/src/utils";
@@ -49,6 +54,8 @@ function ListFooter({
   hasMore: boolean;
   onLoadMore: () => void;
 }) {
+  const { t } = useTranslation();
+
   if (isLoadingMore) {
     return (
       <View style={{ paddingVertical: 20, alignItems: "center" }}>
@@ -60,7 +67,7 @@ function ListFooter({
   if (hasMore) {
     return (
       <View style={{ paddingVertical: 10 }}>
-        <Button title="Load More" onPress={onLoadMore} />
+        <Button title={t("home.loadMore")} onPress={onLoadMore} />
       </View>
     );
   }
@@ -72,6 +79,7 @@ export default function Index() {
   const [search, setSearch] = useState("");
   const [debouncedSearch] = useDebounce(search, 500);
   const insets = useSafeAreaInsets();
+  const { t } = useTranslation();
 
   const query = useCountry(debouncedSearch);
   const { paginated, loadMore, hasMore, isLoadingMore } = usePagination(
@@ -91,10 +99,25 @@ export default function Index() {
   return (
     <SafeScreen>
       <View style={{ flex: 1, paddingHorizontal: 25 }}>
+        <View
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Text
+            style={{ fontSize: 24, fontWeight: "bold", marginVertical: 10 }}
+          >
+            {t("home.headerTitle")}
+          </Text>
+        </View>
+
         <Input
           value={search}
           onChangeText={setSearch}
-          placeholder="Search countries..."
+          placeholder={t("home.searchPlaceholder")}
+          placeholderTextColor="#999"
+          containerStyle={{ marginTop: 15 }}
           leftView={
             <View style={{ marginRight: 8 }}>
               <Icons.SearchIcon width={20} height={20} />
@@ -122,6 +145,7 @@ export default function Index() {
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{
               paddingBottom: insets.bottom,
+              marginTop: 20,
               flexGrow: 1,
             }}
             refreshControl={

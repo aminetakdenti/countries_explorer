@@ -1,8 +1,8 @@
 import React from "react";
-import { Button, Image, Pressable, Text, View } from "react-native";
+import { Image, Pressable, Text, View } from "react-native";
 
 import { useCountry } from "@/src/api";
-import { SafeScreen } from "@/src/components";
+import { Button, SafeScreen } from "@/src/components";
 import { styles } from "@/src/styles";
 import { Icons } from "@/src/utils";
 import { useLocalSearchParams, useRouter } from "expo-router";

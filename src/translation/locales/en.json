@@ -1,7 +1,10 @@
 {
   "home": {
+    "headerTitle": "Countries Explorer",
+    "searchPlaceholder": "Search countries...",
     "searching": "Searching...",
-    "noCountriesFound": "No countries found for "
+    "noCountriesFound": "No countries found for ",
+    "loadMore": "Load More"
   },
   "country": {
     "headerTitle": "Country Details",

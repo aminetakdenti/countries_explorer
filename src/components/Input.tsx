@@ -1,11 +1,17 @@
 import React from "react";
-import { TextInput, TextInputProps, View, ViewStyle } from "react-native";
+import {
+  StyleProp,
+  TextInput,
+  TextInputProps,
+  View,
+  ViewStyle,
+} from "react-native";
 
-type Props = {
+interface Props extends TextInputProps {
   leftView?: React.ReactNode;
   rightView?: React.ReactNode;
-  containerStyle?: ViewStyle;
-} & TextInputProps;
+  containerStyle?: StyleProp<ViewStyle>;
+}
 
 export const Input = ({
   leftView,
