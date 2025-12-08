@@ -17,11 +17,22 @@ interface Props extends TouchableOpacityProps {
   style?: ViewStyle;
 }
 
-export function Button({ onPress, title, titleStyle, style, ...props }: Props) {
+export function Button({
+  onPress,
+  title,
+  titleStyle,
+  style,
+  accessibilityLabel,
+  accessible = true,
+  ...props
+}: Props) {
   return (
     <TouchableOpacity
       onPress={onPress}
       style={[buttonStyles.button, style]}
+      accessible={accessible}
+      accessibilityRole="button"
+      accessibilityLabel={accessibilityLabel ?? title}
       {...props}
     >
       <Text style={[styles.font, buttonStyles.buttonText, titleStyle]}>

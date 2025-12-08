@@ -5,15 +5,20 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type Props = { children: ReactNode } & ViewProps;
 
-export const SafeScreen = ({ children, ...props }: Props) => {
+export const SafeScreen = ({ children, style, ...props }: Props) => {
   const insets = useSafeAreaInsets();
+
   return (
     <View
-      style={{
-        flex: 1,
-        paddingTop: insets.top,
-        backgroundColor: "white",
-      }}
+      style={[
+        {
+          flex: 1,
+          paddingTop: insets.top,
+          backgroundColor: "white",
+        },
+        style,
+      ]}
+      accessible={false}
       {...props}
     >
       {children}

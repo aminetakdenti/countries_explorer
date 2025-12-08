@@ -13,12 +13,16 @@ interface Props extends TextInputProps {
   leftView?: React.ReactNode;
   rightView?: React.ReactNode;
   containerStyle?: StyleProp<ViewStyle>;
+  accessibilityLabel?: string;
+  accessibilityHint?: string;
 }
 
 export const Input = ({
   leftView,
   rightView,
   containerStyle,
+  accessibilityLabel,
+  accessibilityHint,
   ...props
 }: Props) => {
   return (
@@ -36,8 +40,10 @@ export const Input = ({
         },
         containerStyle,
       ]}
+      accessible={false} // container should not be a single accessible element
     >
       {leftView}
+
       <TextInput
         style={[
           {
@@ -48,8 +54,11 @@ export const Input = ({
           styles.font,
           props.style,
         ]}
+        accessibilityLabel={accessibilityLabel ?? props.placeholder}
+        accessibilityHint={accessibilityHint}
         {...props}
       />
+
       {rightView}
     </View>
   );

@@ -8,7 +8,10 @@
     "searchPlaceholder": "Search countries...",
     "searching": "Searching...",
     "noCountriesFound": "No countries found for ",
-    "loadMore": "Load More"
+    "loadMore": "Load More",
+    "countriesList": "Countries list",
+    "clearSearch": "Clear search",
+    "searchCountryHint": "Double tap to search for a country"
   },
   "country": {
     "headerTitle": "Country Details",

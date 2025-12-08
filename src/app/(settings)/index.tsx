@@ -38,6 +38,9 @@ export default function Settings() {
               styles.fontBold,
               { fontSize: 24, fontWeight: "700", marginVertical: 10 },
             ]}
+            accessible
+            accessibilityRole="header"
+            accessibilityLabel={t("settings.headerTitle")}
           >
             {t("settings.headerTitle")}
           </Text>
@@ -62,6 +65,9 @@ export default function Settings() {
               styles.fontBold,
               { fontSize: 16, color: "#666", textAlign: "center" },
             ]}
+            accessible
+            accessibilityRole="text"
+            accessibilityLabel={t("settings.welcomeMessage")}
           >
             {t("settings.welcomeMessage")}
           </Text>
@@ -74,6 +80,10 @@ export default function Settings() {
               styles.spaceBetween,
               { marginTop: 20 },
             ]}
+            accessible
+            accessibilityRole="button"
+            accessibilityLabel={t("settings.changeLang")}
+            accessibilityHint={t("settings.changeLangHint")}
           >
             <Text style={[styles.font]}>{t("settings.changeLang")}</Text>
             <Icons.LangIcon height={20} width={20} />
@@ -88,6 +98,8 @@ export default function Settings() {
           setIsModalVisible(false);
         }}
         visible={isModalVisible}
+        accessible
+        accessibilityViewIsModal
       >
         <Pressable
           style={[
@@ -109,6 +121,8 @@ export default function Settings() {
                 paddingVertical: 10,
               },
             ]}
+            accessible
+            accessibilityLabel={t("settings.modal.title")}
           >
             <Text
               style={[
@@ -120,6 +134,8 @@ export default function Settings() {
                   textAlign: "center",
                 },
               ]}
+              accessible
+              accessibilityRole="header"
             >
               {t("settings.modal.title")}
             </Text>
@@ -132,6 +148,9 @@ export default function Settings() {
             <Button
               title={t("settings.modal.button")}
               onPress={onModalButtonPress}
+              accessibilityRole="button"
+              accessibilityLabel={t("settings.modal.button")}
+              accessibilityHint={t("settings.modal.buttonHint")}
             />
           </View>
         </Pressable>

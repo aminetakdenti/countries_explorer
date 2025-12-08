@@ -69,7 +69,12 @@ function ListFooter({
   if (hasMore) {
     return (
       <View style={{ paddingVertical: 10 }}>
-        <Button title={t("home.loadMore")} onPress={onLoadMore} />
+        <Button
+          title={t("home.loadMore")}
+          accessibilityLabel={t("home.loadMore")}
+          accessibilityRole="button"
+          onPress={onLoadMore}
+        />
       </View>
     );
   }
@@ -108,6 +113,9 @@ export default function Index() {
           }}
         >
           <Text
+            accessibilityRole="header"
+            accessible
+            accessibilityLabel={t("home.headerTitle")}
             style={[
               styles.fontBold,
               { fontSize: 24, fontWeight: "700", marginVertical: 10 },
@@ -121,6 +129,8 @@ export default function Index() {
           value={search}
           onChangeText={setSearch}
           placeholder={t("home.searchPlaceholder")}
+          accessibilityLabel={t("home.searchPlaceholder")}
+          accessibilityHint={t("home.searchCountryHint")}
           placeholderTextColor="#999"
           containerStyle={{ marginTop: 15 }}
           leftView={
@@ -130,7 +140,13 @@ export default function Index() {
           }
           rightView={
             debouncedSearch.length > 0 && (
-              <Pressable style={{ marginLeft: 8 }} onPress={clearSearchValue}>
+              <Pressable
+                accessible
+                accessibilityRole="button"
+                accessibilityLabel={t("home.clearSearch")}
+                style={{ marginLeft: 8 }}
+                onPress={clearSearchValue}
+              >
                 <Icons.ClearIcon width={20} height={20} />
               </Pressable>
             )
@@ -143,6 +159,8 @@ export default function Index() {
           <SearchingState />
         ) : (
           <FlatList
+            accessible
+            accessibilityLabel={t("home.countriesList")}
             data={paginated}
             keyExtractor={(item) => item.cca3}
             onRefresh={query.refetch}

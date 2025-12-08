@@ -28,27 +28,37 @@ type RadioGroupProps = {
 
 export function RadioGroup({
   options,
-  selectedValue,
   onValueChange,
   containerStyle,
   optionStyle,
   labelStyle,
 }: RadioGroupProps) {
   return (
-    <View style={[radioGroupStyles.container, containerStyle]}>
+    <View
+      style={[radioGroupStyles.container, containerStyle]}
+      accessibilityRole="radiogroup"
+    >
       {options.map((option) => {
         return (
           <Pressable
             key={option.value}
             style={[radioGroupStyles.option, optionStyle]}
             onPress={() => onValueChange(option.value)}
+            accessibilityRole="radio"
+            accessibilityState={{ selected: option.isSelected }}
+            accessibilityLabel={option.label}
           >
-            <View style={[radioGroupStyles.circle]}>
-              <View
-                style={[option.isSelected && radioGroupStyles.selectedCircle]}
-              />
+            <View style={radioGroupStyles.circle}>
+              {option.isSelected && (
+                <View style={radioGroupStyles.selectedCircle} />
+              )}
             </View>
-            <Text style={[styles.font, radioGroupStyles.label, labelStyle]}>
+
+            <Text
+              style={[styles.font, radioGroupStyles.label, labelStyle]}
+              // important: prevents screen readers from reading label twice
+              accessible={false}
+            >
               {option.label}
             </Text>
           </Pressable>

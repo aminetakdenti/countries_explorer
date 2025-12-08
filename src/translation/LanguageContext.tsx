@@ -30,7 +30,6 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     const init = async () => {
       try {
         const saved = await AsyncStorage.getItem("language");
-        console.log("saved language: ", saved);
 
         const langToUse = saved === "en" || saved === "sp" ? saved : "en";
 

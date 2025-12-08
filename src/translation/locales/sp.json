@@ -8,7 +8,10 @@
     "searchPlaceholder": "Buscar países...",
     "searching": "Buscando...",
     "noCountriesFound": "No se encontraron países para ",
-    "loadMore": "Cargar más"
+    "loadMore": "Cargar más",
+    "countriesList": "Lista de países",
+    "clearSearch": "Borrar búsqueda",
+    "searchCountryHint": "Pulsa dos veces para buscar un país"
   },
   "country": {
     "headerTitle": "Detalles del País",

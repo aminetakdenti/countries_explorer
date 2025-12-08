@@ -34,6 +34,10 @@ function Header() {
           alignItems: "flex-start",
         }}
         onPress={() => router.back()}
+        accessible
+        accessibilityRole="button"
+        accessibilityLabel={t("country.goBack")}
+        accessibilityHint={t("country.goBackHint")}
       >
         <Icons.LeftArrowIcon width={24} height={34} />
       </Pressable>
@@ -43,6 +47,9 @@ function Header() {
           styles.fontBold,
           { fontSize: 24, fontWeight: "700", marginVertical: 10 },
         ]}
+        accessibilityRole="header"
+        accessible
+        accessibilityLabel={t("country.headerTitle")}
       >
         {t("country.headerTitle")}
       </Text>
@@ -114,6 +121,9 @@ export default function Index() {
           <Image
             source={{ uri: currentCountry.data?.flags.png }}
             style={{ height: "100%", width: "100%" }}
+            accessible
+            accessibilityRole="image"
+            accessibilityLabel={`Flag of ${currentCountry.data?.name.common}`}
           />
         </View>
         <Text
@@ -121,19 +131,42 @@ export default function Index() {
             styles.fontBold,
             { fontSize: 20, fontWeight: "700", marginTop: 20 },
           ]}
+          accessible
+          accessibilityRole="text"
+          accessibilityLabel={`Country name: ${currentCountry.data?.name.common}`}
         >
           {currentCountry.data?.name.common}
         </Text>
-        <Text style={[styles.font, { fontSize: 16, marginTop: 5 }]}>
+        <Text
+          style={[styles.font, { fontSize: 16, marginTop: 5 }]}
+          accessible
+          accessibilityRole="text"
+          accessibilityLabel={`Capital: ${currentCountry.data?.capital?.[0] || t("country.capital")}`}
+        >
           {currentCountry.data?.capital?.[0] || t("country.capital")}
         </Text>
-        <Text style={[styles.font, { fontSize: 16, marginTop: 5 }]}>
+        <Text
+          style={[styles.font, { fontSize: 16, marginTop: 5 }]}
+          accessible
+          accessibilityRole="text"
+          accessibilityLabel={`Region: ${currentCountry.data?.region}`}
+        >
           {currentCountry.data?.region}
         </Text>
-        <Text style={[styles.font, { fontSize: 16, marginTop: 5 }]}>
+        <Text
+          style={[styles.font, { fontSize: 16, marginTop: 5 }]}
+          accessible
+          accessibilityRole="text"
+          accessibilityLabel={`Population: ${currentCountry.data?.population.toLocaleString()}`}
+        >
           {currentCountry.data?.population.toLocaleString()}
         </Text>
-        <Text style={[styles.font, { fontSize: 16, marginTop: 5 }]}>
+        <Text
+          style={[styles.font, { fontSize: 16, marginTop: 5 }]}
+          accessible
+          accessibilityRole="text"
+          accessibilityLabel={`Country code: ${currentCountry.data?.cca3}`}
+        >
           {currentCountry.data?.cca3}
         </Text>
       </View>
