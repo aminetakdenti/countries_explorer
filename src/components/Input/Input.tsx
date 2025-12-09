@@ -55,11 +55,12 @@ export const Input = ({
             flex: 1,
           },
           styles.font,
-          style, // ✔️ use destructured style only
+          style,
         ]}
         accessibilityLabel={accessibilityLabel ?? placeholder}
         accessibilityHint={accessibilityHint}
-        {...restProps} // ✔️ safe, no testID here
+        placeholder={placeholder}
+        {...restProps}
       />
 
       {rightView}
