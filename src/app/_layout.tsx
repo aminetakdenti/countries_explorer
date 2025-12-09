@@ -2,6 +2,8 @@ import { useEffect } from "react";
 
 import "@/src/translation/i18n";
 
+import { StatusBar } from "react-native";
+
 import { LanguageProvider } from "@/src/translation/LanguageContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
@@ -27,50 +29,53 @@ const queryClient = new QueryClient({
 function TabsLayout() {
   const { t } = useTranslation();
   return (
-    <Tabs
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-      <Tabs.Screen
-        name="(home)"
-        options={{
-          title: t("tabs.home"),
-          tabBarIcon(props) {
-            return (
-              <Icons.HomeIcon
-                width={24}
-                height={24}
-                color={
-                  props.focused
-                    ? styles.tabFocused.color
-                    : styles.tabUnfocused.color
-                }
-              />
-            );
-          },
+    <>
+      <StatusBar barStyle={"dark-content"} />
+      <Tabs
+        screenOptions={{
+          headerShown: false,
         }}
-      />
-      <Tabs.Screen
-        name="(settings)/index"
-        options={{
-          title: t("tabs.settings"),
-          tabBarIcon(props) {
-            return (
-              <Icons.SettingsIcon
-                width={24}
-                height={24}
-                color={
-                  props.focused
-                    ? styles.tabFocused.color
-                    : styles.tabUnfocused.color
-                }
-              />
-            );
-          },
-        }}
-      />
-    </Tabs>
+      >
+        <Tabs.Screen
+          name="(home)"
+          options={{
+            title: t("tabs.home"),
+            tabBarIcon(props) {
+              return (
+                <Icons.HomeIcon
+                  width={24}
+                  height={24}
+                  color={
+                    props.focused
+                      ? styles.tabFocused.color
+                      : styles.tabUnfocused.color
+                  }
+                />
+              );
+            },
+          }}
+        />
+        <Tabs.Screen
+          name="(settings)/index"
+          options={{
+            title: t("tabs.settings"),
+            tabBarIcon(props) {
+              return (
+                <Icons.SettingsIcon
+                  width={24}
+                  height={24}
+                  color={
+                    props.focused
+                      ? styles.tabFocused.color
+                      : styles.tabUnfocused.color
+                  }
+                />
+              );
+            },
+          }}
+        />
+      </Tabs>
+    </>
   );
 }
 
