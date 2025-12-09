@@ -1,50 +1,52 @@
-# Welcome to your Expo app 👋
+# Countries Explorer
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Install & Run
 
-## Get started
+- Prerequisites: Node `20.x` LTS, npm `>=9`, optional Xcode/Android Studio for simulators
+- Install dependencies:
 
-1. Install dependencies
+  ```bash
+  yarn
+  ```
 
-   ```bash
-   npm install
-   ```
+- Start development server and choose a platform:
 
-2. Start the app
+  ```bash
+  yarn start
+  ```
 
-   ```bash
-   npx expo start
-   ```
+- Direct platform commands:
+  
+  ```bash
+  yarn android   # build/run on Android (device/emulator)
+  yarn ios       # build/run on iOS (simulator)
+  yarn web       # run in the browser
+  ```
 
-In the output, you'll find options to open the app in a
+## Versions for Reproducibility
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- Node: `20.x` LTS (recommended)
+- Expo SDK: `54` (`expo` `~54.0.26`)
+- React Native: `0.81.5`
+- React: `19.1.0`
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Technical Decisions
 
-## Get a fresh project
+- `expo-router` for file-based routing to simplify navigation and deep linking
+- `@tanstack/react-query` for data fetching, caching, and retry logic
+- `axios` for HTTP client ergonomics and interceptors
+- `i18next`/`react-i18next` for localization and runtime language switching
+- Expo modules (`expo-image`, `expo-haptics`, etc.) for performant cross-platform primitives
+- `@react-native-async-storage/async-storage` for lightweight persistence and caching
 
-When you're ready, run:
+## Tests
 
-```bash
-npm run reset-project
-```
+- Test runner: `jest` with `jest-expo` preset
+- UI tests: `@testing-library/react-native`
+- Run tests:
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+  ```bash
+  yarn test
+  ```
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Notes: The test script runs in watch-all mode; on CI use a non-watch invocation (e.g. `jest`) if needed.
