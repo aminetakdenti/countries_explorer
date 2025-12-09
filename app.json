@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "countries_explorer",
-    "slug": "countries_explorer",
+    "name": "Countries Explorer",
+    "slug": "Countries Explorer",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
